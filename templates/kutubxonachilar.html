@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barcha kutubxonachilar</title>
+</head>
+<body>
+<br>
+<h1>Kutubxonachilar ro'yhati</h1>
+<hr>
+<br>
+<ol>
+    {% for i in kutubxonachilar %}
+   <h2> <li><a href="/kutubxonachilar/{{i.id}}/">{{i.ism}}</a></li> </h2>
+    {% endfor %}
+
+
+</ol>
+ <br>
+    <br>
+    <form method="post">{% csrf_token %}
+        <label>Ism:</label>
+        <input type="text" placeholder="Ism yozing" name="ismi">
+         <br>
+        <br>
+        <label>Ish vaqti:</label>
+        <select name="i_v">
+            <option value="Ertalab">Ertalab</option>
+            <option value="Kechga">Kechga</option>
+        </select>
+
+    </form>
+     <br>
+    <br>

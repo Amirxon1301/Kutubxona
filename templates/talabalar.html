@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Kutubxonadagi barcha talabalar ro'yhati</h1>
+    <br>
+    <hr>
+    <br>
+    <form method="get">
+        <input type="text" placeholder="Ism kiriting" name="qidiruv_sozi">
+        <button>Qidirish</button>
+    </form>
+    <br>
+    <br>
+    <ol>
+        {% for i in talabalar %}
+        <h2><li>{{i.ism}} ({{i.kurs}}-kurs)</li></h2>
+        <a href=""><button>O'chirish</button></a>
+        <a href="/talaba_edit/{{i.id}}/"><button>Update</button></a>
+        {% endfor %}
+    </ol>
+<br>
+<br>
+<form method="post">{% csrf_token %}
+<!--    <input type="text" placeholder="Ism yozing" name="ismi" >-->
+<!--    <input type="number" placeholder="Kurs yozing" name="k">-->
+<!--    <input type="number" placeholder="Kitoblar soni " name="k_s">-->
+    {{ form }}
+    <button>Qo'shish</button>
+
+
+</form>
+    <br>
+</body>
+</html>

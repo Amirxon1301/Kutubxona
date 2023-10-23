@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>book</title>
+</head>
+<body>
+<br>
+<h1>Kutubxonadagi ayollarga tegishli kitoblar ro'yhati</h1>
+<hr>
+<br>
+<ol>
+    {% for i in w_books %}
+   <h2> <li>{{i.nom}}({{i.muallif}})</li> </h2>
+    {% endfor %}
+
+
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sahifasi eng ko'p kitoblar</title>
+</head>
+<body>
+<br>
+<h1>3 ta eng kop sahifali kitoblar</h1>
+<hr>
+<br>
+<ol>
+    {% for i in sahifalar %}
+   <h2> <li>{{i.nom}}({{i.sahifa}})</li> </h2>
+    {% endfor %}
+
+
+</ol>
+</body>
+</html>

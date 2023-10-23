@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eng yoshi katta 3 ta muallif</title>
+</head>
+<body>
+<br>
+<h1>3 ta eng yoshi katta mualliflar</h1>
+<hr>
+<br>
+<br>
+<ol>
+    {% for i in eng_yoshi_kattalar %}
+   <h2> <li>{{i.ism}}({{i.tugilgan_yil}})</li> </h2>
+    {% endfor %}
+</ol>
+<br>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tirik bo'lgan mualliflar</title>
+</head>
+<body>
+<br>
+<h1>Tirik mualliflar ro'yhati</h1>
+<hr>
+<br>
+<ol>
+    {% for i in t_mualliflar %}
+   <h2> <li>{{i.ism}}({{i.tugilgan_yil}})</li> </h2>
+    {% endfor %}
+
+
+</ol>
+</body>
+</html>

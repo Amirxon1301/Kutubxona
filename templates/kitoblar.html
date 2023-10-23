@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>library</title>
+</head>
+<body>
+<br>
+<h1>Kutubxonadagi barcha kitoblar ro'yhati</h1>
+<hr>
+<br>
+<ol>
+    {% for i in books %}
+   <h2> <li><a href="/kitob/{{i.id}}/">{{i.nom}}</a>({{i.muallif}})</li> </h2>
+    <a href=""><button>O'chirish</button></a>
+        <a href="/kitob_edit/{{i.id}}/"><button>Update</button></a>
+        {% endfor %}
+
+
+
+</ol>
+
+<br>
+    <br>
+    <form method="post">{% csrf_token %}
+<!--        <label>Nom:</label>-->
+<!--        <input type="text" placeholder="Kitob nomini kiriting" name="n">-->
+<!--         <br>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <label>sahifa:</label>-->
+<!--        <input type="number" placeholder="bet " name="s">-->
+<!--         <br>-->
+<!--        <br>-->
+<!--        <label>Janr:</label>-->
+<!--        <select name="janr">-->
+<!--            <option value="Badiy">Badiy</option>-->
+<!--            <option value="Ilmiy">Ilmiy</option>-->
+<!--            <option value="Hujjatli">Hujjatli</option>-->
+<!--        </select>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <label>Muallif:</label>-->
+<!--        <select name="muallif">-->
+<!--            {%  for muallif in mualliflar %}-->
+<!--            <option value="{{muallif.id}}">{{ muallif.ism }}</option>-->
+<!--            {% endfor %}-->
+<!--        </select>-->
+        <br>
+        <br>
+        {{ form }}
+        <button>Qo'shish</button>
+    </form>
+     <br>
+    <br>
+
+
+</body>
+</html>

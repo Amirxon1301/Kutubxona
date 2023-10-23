@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barcha recordlar</title>
+</head>
+<body>
+<br>
+<h1>Recordlar ro'yhati</h1>
+<hr>
+<br>
+<ol>
+    {% for i in records %}
+   <h2> <li>{{i.talaba.ism}}ning recordi</li> </h2>
+    <a href="/record_edit/{{i.id}}/"><button>Update</button></a>
+    {% endfor %}
+
+
+</ol>
+ <br>
+<br>
+        <form method="post">{% csrf_token %}>
+       <label>Talaba:</label>
+        <select name="talaba">
+            {%  for talaba in talabalar %}
+            <option value="{{talaba.id}}">{{ talaba.ism }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Kitob:</label>
+        <select name="kitob">
+            {%  for kitob in kitoblar %}
+            <option value="{{kitob.id}}">{{ kitob.nom }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Kutubxonachi:</label>
+        <select name="kutubxonachi">
+            {%  for kutubxonachi in kutubxonachilar %}
+            <option value="{{kutubxonachi.id}}">{{ kutubxonachi.ism }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+            <br>
+        <br>
+        <label>Qaytarish sana:</label>
+        <input type="date" placeholder="sana yozing" name="q_s">
+         <br>
+        <br>
+        <br>
+        <br>
+            <label>Qaytardi:</label>
+        <select name="q">
+            {%  for q in qaytardi %}
+            <option value="{{q.id}}">{{ q.ism }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+    </form>
+     <br>
+    <br>
+</body>
+</html>
