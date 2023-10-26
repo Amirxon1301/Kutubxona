@@ -22,6 +22,8 @@ urlpatterns = [
     path('muallif_edit/<int:pk>/', muallif_update),
     path('badiy_kitoblar/', badiy_kitoblar),
     path('oldest_authors/', eng_yoshi_kattalar),
+    path('author_delete/<int:son>/', muallif_ochir),
+    path('record_edit/<int:pk>/', record_update),
 
 
 ]

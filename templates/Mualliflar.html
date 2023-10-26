@@ -9,10 +9,18 @@
 <h1>Mualliflar ro'yhati</h1>
 <hr>
 <br>
+        <form method="get">
+            <input type="text" placeholder="ism kiriting" name="qidirish_sozi">
+            <button>Qidirish</button>
+
+        </form>
+<br>
+<br>
 <ol>
     {% for i in author %}
    <h2> <li><a href="/muallif/{{i.id}}/">{{i.ism}}</a></li> </h2>
     <a href="/muallif_edit/{{i.id}}/"><button>Update</button></a>
+    <a href="/author_delete/{{i.id}}/"><button>Delete</button></a>
     {% endfor %}
 
 
@@ -43,9 +51,10 @@
         <input type="checkbox" name="t">
          <br>
         <br>
-        {{ form }}
         <button>Qo'shish</button>
-    </form>
+        <br>
+        {{ form }}
+
      <br>
     <br>
 

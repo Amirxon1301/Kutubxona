@@ -9,6 +9,11 @@
 <h1>Recordlar ro'yhati</h1>
 <hr>
 <br>
+<form method="get">
+            <input type="text" placeholder="ism kiriting" name="qidirish_sozi">
+            <button>Qidirish</button>
+
+        </form>
 <ol>
     {% for i in records %}
    <h2> <li>{{i.talaba.ism}}ning recordi</li> </h2>

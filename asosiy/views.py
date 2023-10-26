@@ -63,9 +63,12 @@ def h_mualliflar(request):
         #     tirik=request.POST.get("t") == "on"
         # )
         # return redirect("/author/")
-
+    soz = request.GET.get("qidirish_sozi")
+    natija = Muallif.objects.all()
+    if soz:
+        natija = natija.filter(ism__contains=soz)
     data = {
-        "author" : Muallif.objects.all(),
+        "author" : natija,
         "forma" : MuallifForm()
     }
     return render(request, 'Mualliflar.html', data)
@@ -77,8 +80,12 @@ def bitta_muallif(request, son):
     return render(request,'mashq/muallif.html', data)
 
 def h_recordlar(request):
+    soz = request.GET.get("qidirish_sozi")
+    natija =  Record.objects.all()
+    if soz:
+        natija = natija.filter(talaba__ism__contains=soz)
     data = {
-        "records" : Record.objects.all()
+        "records" :natija
     }
     return render(request,'recordlar.html', data)
 
@@ -178,8 +185,14 @@ def muallif_update(request, pk):
 def record_update(request, pk):
     if request.method == "POST":
         Record.objects.filter(id=pk).update(
-            qaytarish_sana=request.POST.get()
+            qaytarish_sana=request.POST.get("q_s"),
+            qaytardi=request.POST.get("q")
         )
+        return redirect("/records/")
+    data = {
+        "record" : Record.objects.get(id=pk)
+    }
+    return render(request, 'recordlar_update.html', data)
 
 
 def h_kutubxonachi(request):
@@ -196,3 +209,11 @@ def h_kutubxonachi(request):
         "kutubxonachilar": Kutubxonachi.objects.all()
     }
     return render(request, 'kutubxonachilar.html', data)
+
+def muallif_ochir(request,son):
+    Muallif.objects.get(id=son).delete()
+    return redirect("/author/")
+
+
+
+
