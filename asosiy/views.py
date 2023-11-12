@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 
@@ -81,13 +82,15 @@ def bitta_muallif(request, son):
 
 def h_recordlar(request):
     soz = request.GET.get("qidirish_sozi")
-    natija =  Record.objects.all()
-    if soz:
-        natija = natija.filter(talaba__ism__contains=soz)
-    data = {
-        "records" :natija
-    }
-    return render(request,'recordlar.html', data)
+    if request.user.is_authenticated:
+        natija =  Record.objects.filter(egasi=request.user)
+        if soz:
+            natija = natija.filter(talaba__ism__contains=soz)
+        data = {
+            "records" :natija
+        }
+        return render(request, 'recordlar.html', data)
+    return redirect("/")
 
 def t_mualliflar(request):
     data = {
@@ -214,6 +217,18 @@ def muallif_ochir(request,son):
     Muallif.objects.get(id=son).delete()
     return redirect("/author/")
 
+def login_view(request):
+    if request.method == "POST":
+        user = authenticate(
+            username = request.POST.get("l"),
+            password = request.POST.get("p")
+        )
+        if user is  None:
+            return redirect("/")
+        login(request, user)
+        return redirect("bosh_sahifa/")
+    return render(request, 'login.html')
 
-
-
+def logout_view(request):
+    logout(request)
+    return redirect("/")

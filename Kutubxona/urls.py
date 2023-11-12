@@ -5,7 +5,7 @@ from asosiy.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('salom/', salomlash),
-    path('', bosh_sahifa),
+    path('bosh_sahifa/', bosh_sahifa),
     path('kitoblar/', kitoblar),
     path('w_books/', ayollar_kitoblari),
     path('c_books/', k_soni),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('oldest_authors/', eng_yoshi_kattalar),
     path('author_delete/<int:son>/', muallif_ochir),
     path('record_edit/<int:pk>/', record_update),
+    path('', login_view),
+    path('logout/', logout_view),
 
 
 ]

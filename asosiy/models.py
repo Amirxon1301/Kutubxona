@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import *
 # Create your models here.
 class Talaba(models.Model):
     ism = models.CharField(max_length=30)
@@ -38,6 +38,7 @@ class Record(models.Model):
     olingan_sana = models.DateField(auto_now_add=True)
     qaytarish_sana = models.DateField(blank=True, null=True)
     qaytardi = models.BooleanField(default=False)
+    egasi = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return f"{self.talaba.ism} - {self.kitob.nom}ni {self.olingan_sana}da oldi."
 
